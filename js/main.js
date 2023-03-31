@@ -1,5 +1,7 @@
 import { divBuilding } from "./building.js"
 import { mutat} from "./showImage.js";
+import { kosarGomb, mennyiseg } from "./kosar.js";
+
 window.addEventListener("load", () => {
     init();
   })
@@ -14,6 +16,8 @@ function init(){
     let nagyito = document.querySelectorAll(".nagyit");
     let kepek = document.querySelectorAll("img")
     mutat(mutato, kepek);
+    mennyiseg();
+    kosarGomb();
 }
 
 ;

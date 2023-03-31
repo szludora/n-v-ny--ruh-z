@@ -1,3 +1,5 @@
+@import url(kosar.css);
+
 body {
   font-family: Verdana, sans-serif;
   margin: 0;
@@ -139,31 +141,40 @@ img.hover-shadow {
 }
 
 .asd {
-    display: none;
-   
+  display: none;
 }
 
-.asd2{
-    width: 400px;
-    height: 600px;
-    object-fit: contain;
+.asd2 {
+  width: 400px;
+  height: 600px;
+  object-fit: contain;
 }
-
 
 /* ---------------- */
 .kiskepek {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.8s ease-in-out;
-  }
-  
-  .felfed {
-    position: relative;
-    visibility: visible !important;
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
-  }
-  
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.felfed {
+  position: relative;
+  visibility: visible !important;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.formazni {
+  bottom: 0;
+  left: auto;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  height: 320px;
+}
+
+

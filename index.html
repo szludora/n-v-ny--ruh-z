@@ -18,21 +18,29 @@
       crossorigin="anonymous"
       defer
     ></script>
+    <script
+      src="https://kit.fontawesome.com/e618538ebf.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/kosar.js" type="module"></script>
 
-    
     <title>Szlucska Dóra</title>
   </head>
   <body>
+    <!-- -------------kosárgomb -->
+    <div class="kosar" onclick="kosarKatt()">
+        <button><i class="fa-solid fa-shopping-cart"></i><p class="mennyiseg"></p></button>
+    </div>
 
     <div class="container-fluid"></div>
 
     <!-- -------------LIGHTBOX--------------- -->
-    
+
     <div class="row">
       <div class="column">
         <img
           src="images/1.jpg"
-          style="width: 300px; height: 300px; display:none;"
+          style="width: 300px; height: 300px; display: none"
           onclick="openModal();currentSlide(1)"
           class="hover-shadow cursor"
         />
@@ -40,7 +48,7 @@
       <div class="column">
         <img
           src="images/2.jpg"
-          style="width:  300px; height: 300px; display:none;"
+          style="width: 300px; height: 300px; display: none"
           onclick="openModal();currentSlide(2)"
           class="hover-shadow cursor"
         />
@@ -48,7 +56,7 @@
       <div class="column">
         <img
           src="images/3.jpg"
-          style="width:  300px; height: 300px; display:none;"
+          style="width: 300px; height: 300px; display: none"
           onclick="openModal();currentSlide(3)"
           class="hover-shadow cursor"
         />
@@ -84,33 +92,70 @@
           <img
             class="demo cursor asd"
             src="images/1.jpg"
-            style="width: 100%; "
+            style="width: 100%"
             onclick="currentSlide(1)"
-            alt="Nature and sunrise"
+            alt="Aloe vera"
           />
         </div>
         <div class="column">
           <img
             class="demo cursor asd"
             src="images/2.jpg"
-            style="width: 100%;"
+            style="width: 100%"
             onclick="currentSlide(2)"
-            alt="Snow"
+            alt="Orchidea"
           />
         </div>
         <div class="column">
           <img
             class="demo cursor asd"
             src="images/3.jpg"
-            style="width: 100%;"
+            style="width: 100%"
             onclick="currentSlide(3)"
-            alt="Mountains and fjords"
+            alt="Könnyezőpálma"
           />
         </div>
       </div>
     </div>
+
     <!-- --------------------------------- -->
     <script src="js/lightbox.js"></script>
     <script src="js/main.js" type="module"></script>
+    <script>
+        let kosarNyitva= false;
+      function kosarKatt() {
+    
+            if (!kosarNyitva) {
+              tartalomMegnez();
+              kosarNyitva = true;
+            } else {
+              gombBezar();
+              kosarNyitva = false;
+            }
+          }
+
+      function tartalomMegnez() {
+        let gomb = document.querySelector(".kosar");
+        let kulcsok = Object.keys(localStorage);
+        gomb.classList.add("kattintott");
+        setTimeout(function () {
+          let txt = "";
+          for (var i = 0; i < localStorage.length; i++) {
+            txt += `<p class="torles ${localStorage.key(i)}">${localStorage.key(
+              i
+            )}&nbsp&nbsp&nbsp&nbsp<i class="fa-sharp fa-solid fa-trash" class="torlesGomb ${localStorage.key(
+              i
+            )}"></i></p>`;
+          }
+          gomb.innerHTML += txt;
+        }, 1400);
+    }
+        function gombBezar() {
+          let gomb = document.querySelector(".kosar");
+          gomb.innerHTML = `<button><i class="fa-solid fa-shopping-cart"></i><p class="mennyiseg">${localStorage.length}</p></button>`;
+          gomb.classList.remove("kattintott");
+        }
+      
+    </script>
   </body>
 </html>

@@ -1,0 +1,53 @@
+
+.kosar {
+    background-color: rgba(23, 208, 112, 0.261);
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: sticky;
+    top:30px;
+    margin-right: 100px;
+    z-index:1;
+  }
+  
+  
+  .kosar button {
+    border: none;
+    background-color: unset;
+  
+  }
+  
+  .kosar button i {
+    color: rgb(18, 113, 18);
+    font-size: 40px;
+    padding-top: 29px;
+    padding-left: 18px;
+  
+  }
+  
+  .kattintott {
+    height: 250px;
+    width: 200px;
+    background-color: rgb(183, 237, 201);
+    border-radius: 0;
+    margin: 20px;
+    z-index: 2;
+    border-radius: 20%;
+    transition: all 2s ease-in-out;
+  }
+
+  .fa-trash{
+    color: red;
+  }
+
+  p.torles {
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+
+  .mennyiseg{
+    font-size: 18px;
+    text-align: center;
+    margin-left: 23px;
+
+  }
