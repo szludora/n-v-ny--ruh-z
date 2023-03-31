@@ -28,8 +28,11 @@
   </head>
   <body>
     <!-- -------------kosárgomb -->
-    <div class="kosar" onclick="kosarKatt()">
-        <button><i class="fa-solid fa-shopping-cart"></i><p class="mennyiseg"></p></button>
+    <div class="kosar" onclick="kosarKatt(event)">
+      <button>
+        <i class="fa-solid fa-shopping-cart nagyIkon"></i>
+        <p class="mennyiseg"></p>
+      </button>
     </div>
 
     <div class="container-fluid"></div>
@@ -122,9 +125,10 @@
     <script src="js/lightbox.js"></script>
     <script src="js/main.js" type="module"></script>
     <script>
-        let kosarNyitva= false;
-      function kosarKatt() {
-    
+      let kosarNyitva = false;
+      function kosarKatt(event) {
+        if (!event.target.classList.contains("torlesGomb")) {
+          if (event.target.classList.contains("kosar")||event.target.classList.contains("fa-shopping-cart")) {
             if (!kosarNyitva) {
               tartalomMegnez();
               kosarNyitva = true;
@@ -132,7 +136,8 @@
               gombBezar();
               kosarNyitva = false;
             }
-          }
+          }}
+      }
 
       function tartalomMegnez() {
         let gomb = document.querySelector(".kosar");
@@ -143,19 +148,33 @@
           for (var i = 0; i < localStorage.length; i++) {
             txt += `<p class="torles ${localStorage.key(i)}">${localStorage.key(
               i
-            )}&nbsp&nbsp&nbsp&nbsp<i class="fa-sharp fa-solid fa-trash" class="torlesGomb ${localStorage.key(
+            )}&nbsp&nbsp&nbsp&nbsp<i class="${localStorage.key(i)} fa-sharp fa-solid fa-trash" class="torlesGomb ${localStorage.key(
               i
-            )}"></i></p>`;
+            )}" onclick="kosarbolTorol(event)"></i></p>`;
           }
           gomb.innerHTML += txt;
         }, 1400);
-    }
-        function gombBezar() {
-          let gomb = document.querySelector(".kosar");
-          gomb.innerHTML = `<button><i class="fa-solid fa-shopping-cart"></i><p class="mennyiseg">${localStorage.length}</p></button>`;
-          gomb.classList.remove("kattintott");
+      }
+      function gombBezar() {
+        let gomb = document.querySelector(".kosar");
+        gomb.innerHTML = `<button><i class="fa-solid fa-shopping-cart"></i><p class="mennyiseg">${localStorage.length}</p></button>`;
+        gomb.classList.remove("kattintott");
+      }
+
+      function kosarbolTorol(event) {
+        console.log(event.target)
+        let sorok = document.querySelectorAll(".kosar p");
+        let kulcs = event.target.classList[0];
+        let mennyiseg = document.querySelector(".mennyiseg");
+
+        for (let i = 0; i < sorok.length; i++) {
+          if (sorok[i].classList[1] == kulcs) {
+            sorok[i].remove();
+          }
         }
-      
+        localStorage.removeItem(kulcs);
+        mennyiseg.innerHTML = `<p class="mennyiseg">${localStorage.length}</p>`;
+      }
     </script>
   </body>
 </html>
