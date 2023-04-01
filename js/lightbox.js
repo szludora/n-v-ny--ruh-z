@@ -1,9 +1,9 @@
 function openModal() {
-  document.getElementById("myModal").style.display = "block";
+  $("#myModal").css("display", "block")
 }
 
 function closeModal() {
-  document.getElementById("myModal").style.display = "none";
+  $("#myModal").css("display", "none")
 }
 
 var slideIndex = 1;
@@ -19,22 +19,22 @@ function currentSlide(n) {
 
 function showSlides(n) {
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
+  var slides = $(".mySlides");
+  var dots = $(".demo");
+  var captionText = $("#caption");
   if (n > slides.length) {
     slideIndex = 1;
   }
   if (n < 1) {
     slideIndex = slides.length;
   }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-  captionText.innerHTML = dots[slideIndex - 1].alt;
+ 
+    slides.css("display","none");
+    dots.removeClass("active");
+  
+  slides.eq(slideIndex - 1).css("display", "block");
+  dots.eq(slideIndex - 1).addClass("active");
+
+
+  captionText.html(dots.eq(slideIndex - 1).attr("alt"));
 }

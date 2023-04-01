@@ -1,19 +1,13 @@
 import { tablazatKeszit } from "./tablazat.js";
-import {fejleckatt} from "./tablazat.js"
+import { fejleckatt } from "./tablazat.js";
+import { gombKatt } from "./tablaTorol.js";
 
-window.addEventListener("load", () => {
-  init();
+let container;
+
+$(function () {
+  container = $(".tableParent");
+  let tablazat = tablazatKeszit();
+  container.html(tablazat);
+  fejleckatt();
+  gombKatt();
 });
-
-const container = document.querySelector(".tableParent");
-
-function init() {
-  let tablazat=tablazatKeszit();
-  container.innerHTML+=tablazat;
-  fejleckatt()
-
-  
-}
-
-
-

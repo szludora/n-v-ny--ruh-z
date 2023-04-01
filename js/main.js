@@ -1,22 +1,19 @@
 import { divBuilding } from "./building.js";
 import { mutat } from "./showImage.js";
 import { kosarGomb, mennyiseg } from "./kosar.js";
+import {kosarKatt, tartalomMegnez, gombBezar, kosarbolTorol, rendeles, rendelesKeszito} from "./proba.js";
+const container = $(".container-fluid");
 
-window.addEventListener("load", () => {
-  init();
-});
-
-const container = document.querySelector(".container-fluid");
-
-function init() {
+$(function(){
   let szoveg = divBuilding();
-  container.innerHTML += szoveg;
-  let mutato = document.querySelectorAll(".mutat");
-  let kepek = document.querySelectorAll("img");
-  mutat(mutato, kepek);
+  container.html(szoveg);
+  let gombok = $(".mutat");
+  let kepek = $("img");
+  mutat(gombok, kepek);
   mennyiseg();
   kosarGomb();
-}
 
+  $(".kosar").on("click", kosarKatt)
+})
 
-
+$(".torlesGomb").on("click", kosarbolTorol)

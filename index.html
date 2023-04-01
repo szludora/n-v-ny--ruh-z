@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <link rel="stylesheet" href="style/style.css" />
 
     <link
@@ -28,7 +30,7 @@
   <body>
     <a href="admin.html">Admin felület</a>
     <!-- -------------kosárgomb -->
-    <div class="kosar" onclick="kosarKatt(event)">
+    <div class="kosar">
       <button>
         <i class="fa-solid fa-shopping-cart nagyIkon"></i>
         <p class="mennyiseg"></p>
@@ -124,105 +126,6 @@
     <!-- --------------------------------- -->
     <script src="js/lightbox.js"></script>
     <script src="js/main.js" type="module"></script>
-    <script>
-      let kosarNyitva = false;
-
-      function kosarKatt(event) {
-        if (!event.target.classList.contains("torlesGomb")) {
-          if (
-            event.target.classList.contains("kosar") ||
-            event.target.classList.contains("fa-shopping-cart")
-          ) {
-            if (!kosarNyitva) {
-              tartalomMegnez();
-              kosarNyitva = true;
-            } else {
-              gombBezar();
-              kosarNyitva = false;
-            }
-          }
-        }
-      }
-
-      function tartalomMegnez() {
-        let gomb = document.querySelector(".kosar");
-        let kulcsok = Object.keys(localStorage);
-        gomb.classList.add("kattintott");
-        setTimeout(function () {
-          let txt = "";
-          for (var i = 0; i < localStorage.length; i++) {
-            txt += `<p class="torles ${localStorage.key(
-              i
-            )}"><input type="number" id="quantity${i}" name="quantity" min="1" max="5" value="1">${localStorage.key(
-              i
-            )}&nbsp&nbsp&nbsp&nbsp<i class="${localStorage.key(
-              i
-            )} fa-sharp fa-solid fa-trash" class="torlesGomb ${localStorage.key(
-              i
-            )}" onclick="kosarbolTorol(event)"></i></p>`;
-          }
-          txt += `<button type="button" class="rendel ${localStorage.key(
-            i
-          )}" onclick="rendeles()">Rendel</button>`;
-          gomb.innerHTML += txt;
-        }, 1400);
-      }
-
-      function gombBezar() {
-        let gomb = document.querySelector(".kosar");
-        gomb.innerHTML = `<button><i class="fa-solid fa-shopping-cart"></i><p class="mennyiseg">${localStorage.length}</p></button>`;
-        gomb.classList.remove("kattintott");
-      }
-      function kosarbolTorol(event) {
-        let sorok = document.querySelectorAll(".kosar p");
-        let kulcs = event.target.classList[0];
-        let mennyiseg = document.querySelector(".mennyiseg");
-
-        for (let i = 0; i < sorok.length; i++) {
-          if (sorok[i].classList[1] == kulcs) {
-            sorok[i].remove();
-          }
-        }
-        localStorage.removeItem(kulcs);
-        mennyiseg.innerHTML = `<p class="mennyiseg">${localStorage.length}</p>`;
-      }
-
-
-      function rendeles() {
-        let rendeleseim = [];
-
-        let inputok = document.querySelectorAll("input");
-
-        for (let i = 0; i < inputok.length; i++) {
-            let lista = [`${inputok[i].value}`, `${localStorage.key(i)}`]
-            rendeleseim.push(lista);
-        }
-        
-        console.log(localStorage)
-        let szoveg = rendelesKeszito(rendeleseim);
-        console.log(szoveg)
-        let text = "Press a button!\nEither OK or Cancel.";
-        if (confirm(text) == true) {
-        let print_area = window.open();
-        print_area.document.write(szoveg);
-        print_area.document.close();
-            print_area.focus();
-            print_area.print();
-        }
-      }
-
-      function rendelesKeszito(rendeleseim) {
-        let txt = `<table class="table table-striped"><tbody><th>Mennyiség</th><th>Megnevezés</th>`;
-        for (let i = 0; i < rendeleseim.length; i++) {
-            txt += `<tr>`
-            for (let j = 0; j < rendeleseim[i].length; j++) {
-                txt += `<td>${rendeleseim[i][j]}</td>`;
-            }
-            txt += `</tr>`
-        }
-        txt += `</tbody></table>`;
-        return txt;
-      }
-    </script>
+    <script></script>
   </body>
 </html>

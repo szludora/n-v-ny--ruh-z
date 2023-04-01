@@ -4,13 +4,13 @@ let rendKulcs = "";
 let rendIrany = "";
 
 export function fejleckatt() {
-  console.log("fejleckatt");
-  let thk = document.querySelectorAll("th");
-  for (let i = 0; i < thk.length; i++) {
-    thk[i].addEventListener("click", function () {
-      rendezes(plants, thk[i].classList[0]);
-    });
-  }
+  let thk = $("th");
+  
+    thk.on("click", function (event) {
+      let field = $(event.target).attr("data-field")
+      rendezes(plants, field);
+   
+  })
 }
 
 export function tablazatKeszit() {
@@ -20,7 +20,7 @@ export function tablazatKeszit() {
     if(kulcs == "kep"){
       continue
     }
-    txt += `<th class="${kulcs}">${kulcs}</th>`;
+    txt += `<th data-field="${kulcs}">${kulcs}</th>`;
   }
 
   for (let i = 0; i < novenyek.length; i++) {
@@ -49,7 +49,6 @@ function rendezes(lista, kulcs) {
     rendIrany = "novekvo";
     rendKulcs = kulcs;
   }
-  console.log("rendezés", rendKulcs, rendIrany)
 
   lista.sort(function (a, b) {
     let sorrend = 1;
@@ -58,12 +57,10 @@ function rendezes(lista, kulcs) {
     if (rendIrany == "csokkeno") {
       sorrend *= -1;
     }
-    console.log("cmp", rendIrany, a[kulcs], b[kulcs], a[kulcs] < b[kulcs])
     return sorrend;
   });
 
-  console.log("rendezett", lista)
-  let tablaaa = document.querySelector("table");
-  tablaaa.innerHTML = tablazatKeszit();
+  let tablaaa = $("table");
+  tablaaa.html(tablazatKeszit());
   fejleckatt();
 }
