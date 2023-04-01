@@ -9,7 +9,7 @@ export function kosarGomb() {
   }
 }
 
-function kosarhozAdas(i) {
+export function kosarhozAdas(i) {
   let elem = plants[i];
   localStorage.setItem(`${plants[i].nev}`, JSON.stringify(elem));
   const segedLISTA = JSON.parse(localStorage.getItem(`${plants[i].nev}`));
@@ -20,8 +20,6 @@ function kosarhozAdas(i) {
     <p class="mennyiseg">${localStorage.length}</p>
   </button>
 </div>`;
-
-
 }
 
 export function mennyiseg() {

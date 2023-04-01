@@ -5,7 +5,7 @@ export function divBuilding() {
   let txt = `<div class=row>`;
 
   for (let i = 0; i < novenyek.length; i++) {
-    txt += `<div class="col-lg-3 col-sm-5 col-md-3 card border m-2 mx-auto">`;
+    txt += `<div class="col-lg-4 col-md-6 col-sm-12  card border mx-auto">`;
     for (const kulcs in novenyek[i]) {
         if(kulcs=="kep"){
             txt += `<img class="card-img-top kiskepek" src="images/${novenyek[i][kulcs]}" style="visibility: hidden;"><div class="card-body">`

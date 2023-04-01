@@ -26,8 +26,9 @@
   }
   
   .kattintott {
-    height: 250px;
-    width: 200px;
+    height: auto;
+    padding-bottom: 20px;
+    width: 300px;
     background-color: rgb(183, 237, 201);
     border-radius: 0;
     margin: 20px;
@@ -50,4 +51,21 @@
     text-align: center;
     margin-left: 23px;
 
+  }
+
+  input{
+    width: 40px;
+  }
+
+  .rendel{
+    text-align: center;
+    background-color: rgb(12, 186, 67) !important;
+    border: solid 1px black;
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 100px;
+  }
+
+  .rendel:hover{
+    color: white;
   }
