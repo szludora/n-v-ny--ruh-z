@@ -6,6 +6,9 @@ export function tablazatKeszit() {
 
 
     for (const kulcs in novenyek[0]) {
+        if(kulcs=="kep"){
+            continue
+        }
         txt += `<th class="${kulcs}">${kulcs}</th>`;
     }
 
