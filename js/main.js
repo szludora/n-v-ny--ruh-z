@@ -38,6 +38,9 @@ function megjelenit(adat){
   mennyiseg();
   kosarGomb();
 
-  $(".kosar").on("click", kosarKatt);
+  $(".kosar").on("click",
+    kosarKatt
+   );
+
   $(".kosar").on("click", ".torlesGomb", kosarbolTorol);
 }

@@ -13,6 +13,7 @@ export function kosarKatt(event) {
         tartalomMegnez();
         kosarNyitva = true;
       } else {
+        $(".kosar").on("click", kosarKatt)
         gombBezar();
         kosarNyitva = false;
       }
@@ -25,7 +26,7 @@ export function tartalomMegnez() {
   let kulcsok = Object.keys(localStorage);
   gomb.addClass("kattintott");
   setTimeout(function () {
-    let txt = "";
+    let txt = `<button><i class="fa-solid fa-shopping-cart"></i><p class="mennyiseg">${localStorage.length}</p></button>`;
     for (var i = 0; i < localStorage.length; i++) {
       txt += `<p class="torles ${localStorage.key(
         i
@@ -38,7 +39,7 @@ export function tartalomMegnez() {
       )}"></i></p>`;
     }
     txt += `<button type="button" class="rendel">Rendel</button>`;
-    gomb.append(txt);
+    gomb.html(txt);
   }, 1400);
   $(document).on("click", ".rendel", function() {
     rendeles(document)});
