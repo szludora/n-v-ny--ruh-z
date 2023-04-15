@@ -1,7 +1,8 @@
 import { plants } from "./plants.js";
-let novenyek = plants;
+
 
 export function divBuilding() {
+  let novenyek = plants.items;
   let txt = `<div class="row">`;
 
   for (let i = 0; i < novenyek.length; i++) {

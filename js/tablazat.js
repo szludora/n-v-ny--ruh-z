@@ -1,5 +1,5 @@
 import { plants } from "./plants.js";
-let novenyek = plants;
+let novenyek = plants.items;
 let rendKulcs = "";
 let rendIrany = "";
 
@@ -8,7 +8,7 @@ export function fejleckatt() {
   
     thk.on("click", function (event) {
       let field = $(event.target).attr("data-field")
-      rendezes(plants, field);
+      rendezes(plants.items, field);
    
   })
 }

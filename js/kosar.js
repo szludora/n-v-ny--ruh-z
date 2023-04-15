@@ -8,9 +8,9 @@ export function kosarGomb() {
 }
 
 export function kosarhozAdas(i) {
-  let elem = plants[i];
-  localStorage.setItem(`${plants[i].nev}`, JSON.stringify(elem));
-  // const segedLISTA = JSON.parse(localStorage.getItem(`${plants[i].nev}`));
+  let elem = plants.items[i];
+  localStorage.setItem(`${plants.items[i].nev}`, JSON.stringify(elem));
+  // const segedLISTA = JSON.parse(localStorage.getItem(`${plants.items[i].nev}`));
   let kosarIkon = $(".kosar");
   kosarIkon.html(`<div class="kosar">
   <button>
